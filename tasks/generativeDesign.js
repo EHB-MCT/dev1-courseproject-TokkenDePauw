@@ -27,3 +27,21 @@ function stars() {
 		Utils.fillCircle(x, y, r);
 	}
 }
+
+planets();
+
+function planets() {
+	let planets = 15;
+
+	for (let i = 0; i < planets; i++) {
+		let x = Utils.randomNumber(0, width);
+		let y = Utils.randomNumber(0, height);
+		let r = Utils.randomNumber(5, 20);
+		let h = i * 24;
+		let s = Utils.randomNumber(40, 60);
+		let l = Utils.randomNumber(40, 50);
+
+		context.fillStyle = Utils.hsl(h, s, l);
+		Utils.fillCircle(x, y, r);
+	}
+}
