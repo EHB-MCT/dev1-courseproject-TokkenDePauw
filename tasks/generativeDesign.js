@@ -28,6 +28,19 @@ function stars() {
 	}
 }
 
+sun();
+
+function sun() {
+	let sunX = width - 100;
+	let SunY = 100;
+	let sunR = 75;
+
+	context.fillStyle = "#FF8000";
+	Utils.fillCircle(sunX, SunY, sunR + 10);
+	context.fillStyle = "#FFDD00";
+	Utils.fillCircle(sunX, SunY, sunR);
+}
+
 planets();
 
 function planets() {
@@ -85,4 +98,28 @@ function rocket() {
 	Utils.fillCircle(rocketX + 25, rocketY + 180, 20, 20);
 	context.fillStyle = "#700";
 	Utils.fillCircle(rocketX + 25, rocketY + 150, 20, 20);
+}
+
+ufo();
+
+function ufo() {
+	let ufos = 3;
+	for (let i = 0; i < ufos; i++) {
+		let ufoX = Utils.randomNumber(0, width);
+		let ufoY = Utils.randomNumber(0, height);
+		let ufoR = 25;
+		let uforX = 25;
+		let uforY = 10;
+
+		context.fillStyle = "#ADD8E6";
+		Utils.fillCircle(ufoX, ufoY + -10, ufoR - 10);
+		context.fillStyle = "#00FF00";
+		Utils.fillCircle(ufoX, ufoY - 15, ufoR - 20);
+		context.fillStyle = "black";
+		Utils.fillCircle(ufoX - 2, ufoY - 15, ufoR - 24);
+		context.fillStyle = "black";
+		Utils.fillCircle(ufoX + 2, ufoY - 15, ufoR - 24);
+		context.fillStyle = "#808080";
+		Utils.fillEllipse(ufoX, ufoY, uforX, uforY);
+	}
 }
