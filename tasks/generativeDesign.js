@@ -45,3 +45,44 @@ function planets() {
 		Utils.fillCircle(x, y, r);
 	}
 }
+
+rocket();
+
+function rocket() {
+	let rocketX = Utils.randomNumber(0, width);
+	let rocketY = Utils.randomNumber(0, height);
+	let rocketWidth = 50;
+	let rocketHeight = 100;
+
+	// Bovenste deel van de raket
+	context.fillStyle = "#D32F2F";
+	Utils.fillEllipse(rocketX + 25, rocketY, rocketWidth / 2, rocketHeight / 4);
+
+	// Motor van de raket
+	context.fillStyle = "#262626";
+	Utils.fillEllipse(rocketX + 25, rocketY + 125, rocketWidth, rocketHeight / 2);
+	context.fillStyle = "#000000";
+	context.fillRect(rocketX - 25, rocketY + 125, 100, 50);
+
+	// Middenste deel van de raket
+	context.fillStyle = "#B0B0B0";
+	context.fillRect(rocketX, rocketY, rocketWidth, rocketHeight);
+
+	// Raam van de raket
+	context.fillStyle = "#4A4A4A";
+	Utils.fillCircle(rocketX + 25, rocketY + 50, 15);
+	context.fillStyle = "#ADD8E6";
+	Utils.fillCircle(rocketX + 25, rocketY + 50, 10);
+
+	// Onderste deel van de raket
+	context.fillStyle = "#4A4A4A";
+	context.fillRect(rocketX, rocketY + 100, rocketWidth, rocketHeight / 4);
+
+	// Vuur van de raket
+	context.fillStyle = "#FF4500";
+	Utils.fillCircle(rocketX + 25, rocketY + 210, 20, 20);
+	context.fillStyle = "#FFA500";
+	Utils.fillCircle(rocketX + 25, rocketY + 180, 20, 20);
+	context.fillStyle = "#700";
+	Utils.fillCircle(rocketX + 25, rocketY + 150, 20, 20);
+}
