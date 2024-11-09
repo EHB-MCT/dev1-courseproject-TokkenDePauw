@@ -13,16 +13,6 @@ function background() {
 	context.fillRect(0, 0, width, height);
 }
 
-perlin();
-// Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
-function perlin() {
-	for (let i = 0; i < width; i++) {
-		let n = noise.perlinNoise(i / 75) * 300 + height / 3;
-		context.fillStyle = "#43F51B";
-		context.fillRect(i, n, 5, 5);
-	}
-}
-
 drawLines();
 
 function drawLines() {
@@ -40,6 +30,16 @@ function drawLines() {
 	for (let i = 0; i < height / 20; i++) {
 		Utils.drawLine(x, y, 0, i * 20);
 		Utils.drawLine(x, y, width, i * 20);
+	}
+}
+
+perlin();
+// Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
+function perlin() {
+	for (let i = 0; i < width; i++) {
+		let n = noise.perlinNoise(i / 75) * 300 + height / 3;
+		context.fillStyle = "#43F51B";
+		context.fillRect(i, n, 5, 5);
 	}
 }
 
