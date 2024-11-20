@@ -15,21 +15,21 @@ function background() {
 
 drawLines();
 
-function drawLines() {
+function drawLines(lineScaping) {
 	context.strokeStyle = "#43F51B";
 	context.lineWidth = 0.25;
 	let x = width / 2;
 	let y = height / 2;
 
-	for (let i = 0; i < width / 20; i++) {
-		Utils.drawLine(x, y, i * 20, 0);
-		Utils.drawLine(x, y, i * 20, height);
+	for (let i = 0; i < width / lineScaping; i++) {
+		Utils.drawLine(x, y, i * lineScaping, 0);
+		Utils.drawLine(x, y, i * lineScaping, height);
 	}
 
 	context.strokeStyle = "#43F51B";
-	for (let i = 0; i < height / 20; i++) {
-		Utils.drawLine(x, y, 0, i * 20);
-		Utils.drawLine(x, y, width, i * 20);
+	for (let i = 0; i < height / lineScaping; i++) {
+		Utils.drawLine(x, y, 0, i * lineScaping);
+		Utils.drawLine(x, y, width, i * lineScaping);
 	}
 }
 
