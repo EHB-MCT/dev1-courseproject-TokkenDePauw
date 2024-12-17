@@ -14,6 +14,10 @@ update();
 
 function setup() {
 	window.onmousemove = mouseMove;
+
+	for (let i = 0; i < 500; i++) {
+		raindrops.push(createRaindrop());
+	}
 }
 
 function createRaindrop() {
