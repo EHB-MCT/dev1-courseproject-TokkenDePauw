@@ -59,3 +59,14 @@ function mouseMove(eventData) {
 	wind = xOffset / 100;
 	sat = eventData.pageY / 2;
 }
+
+function drawSignature() {
+	context.fillStyle = "#000000";
+	context.fillRect(width - 300, height - 300, 300, 300);
+
+	context.fillStyle = "#D957C4";
+	context.fillRect(width - 225, height - 275, 150, 100);
+	context.fillRect(width - 175, height - 175, 50, 100);
+	context.fillRect(width - 225, height - 125, 50, 100);
+	context.fillRect(width - 125, height - 125, 50, 100);
+}
