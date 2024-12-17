@@ -16,8 +16,6 @@ function setup() {
 	window.onmousemove = mouseMove;
 }
 
-createRaindrop();
-
 function createRaindrop() {
 	x: Utils.randomNumber(0, width);
 	y: Utils.randomNumber(0, height);
@@ -25,8 +23,6 @@ function createRaindrop() {
 	speed: Utils.randomNumber(5, 10);
 	opacity: Utils.randomNumber(0.6, 1);
 }
-
-drawRaindrop();
 
 function drawRaindrop(x, y, size) {
 	context.beginPath();
@@ -56,4 +52,10 @@ function update() {
 	}
 
 	requestAnimationFrame(update);
+}
+
+function mouseMove(eventData) {
+	let xOffset = width / 2 - eventData.pageX;
+	wind = xOffset / 100;
+	sat = eventData.pageY / 2;
 }
