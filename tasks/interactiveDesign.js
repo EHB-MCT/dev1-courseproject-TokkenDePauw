@@ -36,3 +36,24 @@ function drawRaindrop(x, y, size) {
 	context.lineWidth = 2;
 	context.stroke();
 }
+
+function update() {
+	context.fillStyle = Utils.hsl(200, 50, 20);
+	context.fillRect(0, 0, width, height);
+
+	for (let i = 0; i < raindrops.length; i++) {
+		let drop = raindrops[i];
+
+		if (drop.y > height) {
+			drop.y = -drop.size;
+			drop.x = Utils.randomNumber(0, width);
+		}
+
+		drop.y += drop.speed;
+		drop.x += Utils.randomNumber(-1, 1) + wind;
+
+		drawRaindrop(drop.x, drop.y, drop.size);
+	}
+
+	requestAnimationFrame(update);
+}
