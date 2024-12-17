@@ -25,3 +25,14 @@ function createRaindrop() {
 	speed: Utils.randomNumber(5, 10);
 	opacity: Utils.randomNumber(0.6, 1);
 }
+
+drawRaindrop();
+
+function drawRaindrop(x, y, size) {
+	context.beginPath();
+	context.moveTo(x, y);
+	context.lineTo(x, y + size);
+	context.strokeStyle = Utils.hsla(200, 100, 100 - (sat / height) * 100, 50);
+	context.lineWidth = 2;
+	context.stroke();
+}
