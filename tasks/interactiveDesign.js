@@ -6,31 +6,35 @@ import * as noise from "../scripts/noise.js";
 let width = context.canvas.width;
 let height = context.canvas.height;
 
-let raindrops = [];
-let wind = 0;
-let sat = 0;
+let raindrops = []; //Array van regendruppels
+let wind = 0; //windsterkt regendruppels
+let sat = 0; //Saturation regendruppels
 
 setup();
 update();
 
+//Stelt de muisbeweging en regen in
 function setup() {
 	window.onmousemove = mouseMove;
 
+	//Maakt 500 regendruppels
 	for (let i = 0; i < 500; i++) {
 		raindrops.push(createRaindrop());
 	}
 }
 
+//Maakt een regendruppel
 function createRaindrop() {
 	return {
-		x: Utils.randomNumber(0, width),
-		y: Utils.randomNumber(0, height),
-		size: Utils.randomNumber(2, 7),
-		speed: Utils.randomNumber(5, 10),
-		opacity: Utils.randomNumber(0.6, 1),
+		x: Utils.randomNumber(0, width), //Random x-position
+		y: Utils.randomNumber(0, height), //Random y-position
+		size: Utils.randomNumber(2, 7), //Random size
+		speed: Utils.randomNumber(5, 10), //Random speed
+		opacity: Utils.randomNumber(0.6, 1), //Random opacity
 	};
 }
 
+//Tekent een regendrubbel
 function drawRaindrop(x, y, size) {
 	context.beginPath();
 	context.moveTo(x, y);
@@ -40,13 +44,16 @@ function drawRaindrop(x, y, size) {
 	context.stroke();
 }
 
+//Update de functie voor de animatie
 function update() {
 	context.fillStyle = Utils.hsl(200, 50, 20);
 	context.fillRect(0, 0, width, height);
 
+	//Werkt elke regendruppel bij
 	for (let i = 0; i < raindrops.length; i++) {
 		let drop = raindrops[i];
 
+		//Zet de druppel weer bovenaan als hij uit het scherm gaat
 		if (drop.y > height) {
 			drop.y = -drop.size;
 			drop.x = Utils.randomNumber(0, width);
@@ -59,25 +66,23 @@ function update() {
 	}
 
 	perlin();
-
 	bpm();
-
 	drawSignature();
-
 	requestAnimationFrame(update);
 }
 
 /**
- *
+ * Deze functie wordt uitgevoerd wanneer de muis beweegt.
  * @param {MouseEvent} eventData
  */
 function mouseMove(eventData) {
-	let xOffset = width / 2 - eventData.pageX;
-	wind = xOffset / 100;
-	sat = eventData.pageY / 2;
+	let xOffset = width / 2 - eventData.pageX; //Berekent de afstand van de muis
+	wind = xOffset / 100; //Zet de wind op basis van de muisbeweging
+	sat = eventData.pageY / 2; // Zet de saturation op basis van de muisbeweging
 }
 
-// Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
+//Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
+//Voegt noise  functie toe
 function perlin() {
 	for (let i = 0; i < width; i++) {
 		let n = noise.perlinNoise(i / 75) * 300 + height / 3;
@@ -86,6 +91,7 @@ function perlin() {
 	}
 }
 
+//Tekent BMP 69
 function bpm() {
 	context.fillStyle = "#00FF00";
 
@@ -121,6 +127,7 @@ function bpm() {
 	context.fillRect(width - 80, 60, 10, 40);
 }
 
+//Tekent spaceinvader
 function drawSignature() {
 	context.fillStyle = "#000000";
 	context.fillRect(width - 300, height - 300, 300, 300);
