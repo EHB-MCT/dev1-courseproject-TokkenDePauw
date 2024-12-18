@@ -72,7 +72,7 @@ function update() {
 }
 
 /**
- * Deze functie wordt uitgevoerd wanneer de muis beweegt.
+ * Deze functie wordt uitgevoerd wanneer de muis beweegt
  * @param {MouseEvent} eventData
  */
 function mouseMove(eventData) {
@@ -82,7 +82,7 @@ function mouseMove(eventData) {
 }
 
 //Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
-//Voegt noise  functie toe
+//Voegt noise functie toe
 function perlin() {
 	for (let i = 0; i < width; i++) {
 		let n = noise.perlinNoise(i / 75) * 300 + height / 3;
