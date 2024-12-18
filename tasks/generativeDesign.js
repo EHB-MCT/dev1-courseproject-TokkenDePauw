@@ -13,7 +13,7 @@ function background() {
 	context.fillRect(0, 0, width, height);
 }
 
-drawLines();
+drawLines(20);
 
 function drawLines(lineScaping) {
 	context.strokeStyle = "#43F51B";
