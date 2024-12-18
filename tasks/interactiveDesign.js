@@ -15,7 +15,7 @@ update();
 
 //Stelt de muisbeweging en regen in
 function setup() {
-	window.onmousemove = mouseMove;
+	document.onmousemove = mouseMove;
 
 	//Maakt 500 regendruppels
 	for (let i = 0; i < 500; i++) {
@@ -39,14 +39,14 @@ function drawRaindrop(x, y, size) {
 	context.beginPath();
 	context.moveTo(x, y);
 	context.lineTo(x, y + size);
-	context.strokeStyle = Utils.hsla(200, 100, 100 - (sat / height) * 100, 50);
-	context.lineWidth = 2;
+	context.strokeStyle = Utils.hsla(120, 100, 50 - (sat / height) * 100, 50);
+	context.lineWidth = 5;
 	context.stroke();
 }
 
 //Update de functie voor de animatie
 function update() {
-	context.fillStyle = Utils.hsl(200, 50, 20);
+	context.fillStyle = "#0A0F0A";
 	context.fillRect(0, 0, width, height);
 
 	//Werkt elke regendruppel bij
@@ -73,12 +73,12 @@ function update() {
 
 /**
  * Deze functie wordt uitgevoerd wanneer de muis beweegt
- * @param {MouseEvent} eventData
+ * @param {MouseEvent} e
  */
-function mouseMove(eventData) {
-	let xOffset = width / 2 - eventData.pageX; //Berekent de afstand van de muis
+function mouseMove(e) {
+	let xOffset = width / 2 - e.pageX; //Berekent de afstand van de muis
 	wind = xOffset / 100; //Zet de wind op basis van de muisbeweging
-	sat = eventData.pageY / 2; // Zet de saturation op basis van de muisbeweging
+	sat = e.pageY / 5; // Zet de saturation op basis van de muisbeweging
 }
 
 //Adapted by Peter Dickx for the DEV1 course @ Erasmushogeschool Brussel
@@ -86,27 +86,27 @@ function mouseMove(eventData) {
 function perlin() {
 	for (let i = 0; i < width; i++) {
 		let n = noise.perlinNoise(i / 75) * 300 + height / 3;
-		context.fillStyle = "#43F51B";
+		context.fillStyle = Utils.hsla(120, 100, 50 - (sat / height) * 100, 50);
 		context.fillRect(i, n, 5, 5);
 	}
 }
 
 //Tekent BMP 69
 function bpm() {
-	context.fillStyle = "#00FF00";
+	context.fillStyle = Utils.hsla(120, 100, 50 - (sat / height) * 100, 50);
 
 	//B
 	context.fillRect(width - 400, 50, 10, 110);
 	context.fillRect(width - 360, 60, 10, 40);
 	context.fillRect(width - 360, 110, 10, 40);
-	context.fillRect(width - 400, 50, 40, 10);
-	context.fillRect(width - 400, 100, 40, 10);
-	context.fillRect(width - 400, 150, 40, 10);
+	context.fillRect(width - 390, 50, 30, 10);
+	context.fillRect(width - 390, 100, 30, 10);
+	context.fillRect(width - 390, 150, 30, 10);
 	//P
 	context.fillRect(width - 325, 50, 10, 110);
 	context.fillRect(width - 285, 60, 10, 40);
-	context.fillRect(width - 325, 50, 40, 10);
-	context.fillRect(width - 325, 100, 40, 10);
+	context.fillRect(width - 315, 50, 30, 10);
+	context.fillRect(width - 315, 100, 30, 10);
 	//M
 	context.fillRect(width - 250, 60, 10, 100);
 	context.fillRect(width - 240, 50, 20, 10);
@@ -116,13 +116,13 @@ function bpm() {
 	//6
 	context.fillRect(width - 150, 60, 10, 90);
 	context.fillRect(width - 140, 50, 30, 10);
-	context.fillRect(width - 150, 100, 40, 10);
+	context.fillRect(width - 140, 100, 30, 10);
 	context.fillRect(width - 140, 150, 30, 10);
 	context.fillRect(width - 110, 110, 10, 40);
 	//9
 	context.fillRect(width - 40, 60, 10, 90);
 	context.fillRect(width - 70, 50, 30, 10);
-	context.fillRect(width - 70, 100, 40, 10);
+	context.fillRect(width - 70, 100, 30, 10);
 	context.fillRect(width - 70, 150, 30, 10);
 	context.fillRect(width - 80, 60, 10, 40);
 }
